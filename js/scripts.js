@@ -17,7 +17,7 @@ window.addEventListener('load', function() {
 // Улучшенная конфигурация Particles.js (больше частиц, разнообразие размеров)
 particlesJS("particles-js", {
   "particles": {
-    "number": { "value": 200, "density": { "enable": true, "value_area": 800 } },
+    "number": { "value": window.innerWidth < 768 ? 80 : 200 , "density": { "enable": true, "value_area": 800 } },
     "color": { "value": "#ffffff" },
     "shape": { "type": "circle" },
     "opacity": { "value": 0.6, "random": true },
@@ -60,6 +60,65 @@ function loadModel(modelPath, containerId) {
   // Очистка контейнера, если необходимо
   container.innerHTML = "";
   
+  const controlsHTML = `
+  <div class="model-controls">
+    <button class="control-btn" onclick="toggleRotation(this)">▶ Автоповорот</button>
+    <button class="control-btn" onclick="resetCamera()">↻ Сброс</button>
+  </div>
+`;
+container.insertAdjacentHTML('beforeend', controlsHTML);
+
+let autoRotate = true;
+let model;
+
+window.toggleRotation = function(btn) {
+  autoRotate = !autoRotate;
+  btn.textContent = autoRotate ? "▶ Автоповорот" : "⏸ Стоп";
+  controls.autoRotate = autoRotate;
+};
+
+window.resetCamera = function() {
+  controls.reset();
+  camera.position.set(0, 1, 3);
+};
+
+// Добавить обработчики событий для масштабирования
+const pointer = new THREE.Vector2();
+const raycaster = new THREE.Raycaster();
+
+container.addEventListener('pointerdown', onPointerDown);
+container.addEventListener('wheel', onMouseWheel);
+
+function onPointerDown(event) {
+  pointer.set(
+    (event.clientX / window.innerWidth) * 2 - 1,
+    -(event.clientY / window.innerHeight) * 2 + 1
+  );
+  
+  raycaster.setFromCamera(pointer, camera);
+  const intersects = raycaster.intersectObject(model, true);
+  
+  if (intersects.length > 0) {
+    container.style.cursor = 'grabbing';
+    document.addEventListener('pointermove', onPointerMove);
+    document.addEventListener('pointerup', onPointerUp);
+  }
+}
+
+function onPointerMove(event) {
+  // Реализация вращения модели
+  model.rotation.y += event.movementX * 0.01;
+  model.rotation.x += event.movementY * 0.01;
+}
+
+function onMouseWheel(event) {
+  // Масштабирование модели
+  const delta = event.deltaY * 0.001;
+  model.scale.x = Math.max(0.3, model.scale.x - delta);
+  model.scale.y = Math.max(0.3, model.scale.y - delta);
+  model.scale.z = Math.max(0.3, model.scale.z - delta);
+}
+
   // Создание сцены
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x000000);
