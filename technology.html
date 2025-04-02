@@ -24,7 +24,7 @@
         <li class="nav-item"><a class="nav-link" href="history.html">История и культура</a></li>
         <li class="nav-item"><a class="nav-link" href="contributions.html">Вклад учёных</a></li>
         <li class="nav-item"><a class="nav-link" href="achievements.html">Достижения</a></li>
-        <li class="nav-item"><a class="nav-link" href="technology.html">Техника</a></li>
+        <li class="nav-item"><a class="nav-link active" href="technology.html">Техника</a></li>
         <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
       </ul>
     </div>
@@ -37,8 +37,9 @@
       <p class="animate-text">
         Белорусские инженеры и технологи создают высокоточные разработки для космических аппаратов. Ракета‑носитель, являющаяся носителем спутника, – это пример современных инженерных решений, инноваций и патриотического духа, который позволяет выводить отечественную технику на мировой уровень.
       </p>
-      <!-- Окно для 3D модели ракеты -->
-      <div id="three-container" class="three-container animate-fade"></div>
+    <!-- Контейнер для 3D модели с полным окном -->
+    <div id="three-container" class="three-container full-screen-3d animate-fade"></div>
+    <div class="container">
       <p class="animate-text">
         3D модель ракеты‑носителя демонстрирует техническую мощь и инновационный потенциал белорусской космической отрасли.
       </p>
@@ -57,6 +58,7 @@
   <!-- Three.js и GLTFLoader -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
   <script src="js/scripts.js"></script>
   <script>
     // Загрузка модели ракеты‑носителя
