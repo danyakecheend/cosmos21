@@ -1,0 +1,120 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Arial', sans-serif; overflow-x: hidden; }
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  top: 0;
+  left: 0;
+  background: #000;
+}
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loader .rocket {
+  font-size: 4rem;
+  animation: rocketSpin 1.5s linear infinite;
+}
+@keyframes rocketSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.navbar {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 1rem 2rem;
+}
+.navbar-brand { font-size: 1.8rem; font-weight: bold; }
+.navbar .nav-link {
+  font-size: 1.2rem;
+  margin: 0 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #3498db;
+  bottom: 0;
+  left: 0;
+  transition: width 0.3s;
+}
+.navbar .nav-link:hover::after { width: 100%; }
+
+.main-header {
+  padding: 100px 0;
+  text-align: center;
+  color: #fff;
+}
+.main-header h1 { font-size: 3rem; margin-bottom: 1rem; }
+.main-header p { font-size: 1.5rem; margin-bottom: 2rem; }
+
+.nav-cards { margin-top: 50px; }
+.nav-card {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #3498db;
+  color: #fff;
+  transition: transform 0.3s, background 0.3s;
+  text-decoration: none;
+}
+.nav-card:hover { transform: scale(1.05); background: rgba(0, 0, 0, 0.9); }
+.nav-card .card-body { padding: 2rem; }
+.nav-card .card-title { font-size: 1.8rem; margin-bottom: 1rem; }
+.nav-card .card-text { font-size: 1rem; }
+
+.page-section {
+  padding: 100px 0;
+  min-height: 100vh;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+}
+.page-section h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #3498db;
+}
+
+.three-container {
+  width: 100%;
+  height: 400px;
+  background: #000;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+.animate-header { opacity: 0; transform: translateY(-30px); }
+.animate-subheader { opacity: 0; transform: translateY(30px); }
+.animate-section { opacity: 0; transform: translateX(-30px); }
+.animate-text { opacity: 0; }
+.animate-fade { opacity: 0; }
+
+footer {
+  background: rgba(0,0,0,0.9);
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}

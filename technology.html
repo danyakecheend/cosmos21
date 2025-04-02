@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Техника - Космическая Станция</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="particles-js"></div>
+  <div id="preloader">
+    <div class="loader"><span class="rocket">🚀</span></div>
+  </div>
+  
+  <!-- Навигация -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="index.html">Космическая Станция</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" href="history.html">История и культура</a></li>
+        <li class="nav-item"><a class="nav-link" href="contributions.html">Вклад учёных</a></li>
+        <li class="nav-item"><a class="nav-link" href="achievements.html">Достижения</a></li>
+        <li class="nav-item"><a class="nav-link" href="technology.html">Техника</a></li>
+        <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- Основной контент -->
+  <section class="page-section">
+    <div class="container">
+      <h2 class="section-title animate-section">Развитие космической техники</h2>
+      <p class="animate-text">
+        Белорусские инженеры и технологи создают высокоточные разработки для космических аппаратов. Ракета‑носитель, являющаяся носителем спутника, – это пример современных инженерных решений, инноваций и патриотического духа, который позволяет выводить отечественную технику на мировой уровень.
+      </p>
+      <!-- Окно для 3D модели ракеты -->
+      <div id="three-container" class="three-container animate-fade"></div>
+      <p class="animate-text">
+        3D модель ракеты‑носителя демонстрирует техническую мощь и инновационный потенциал белорусской космической отрасли.
+      </p>
+    </div>
+  </section>
+  
+  <footer class="text-center">
+    <p>&copy; 2025 Космическая Станция. Все права защищены.</p>
+  </footer>
+  
+  <!-- Скрипты -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <!-- Three.js и GLTFLoader -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="js/scripts.js"></script>
+  <script>
+    // Загрузка модели ракеты‑носителя
+    loadModel("models/rocket.glb", "three-container");
+  </script>
+</body>
+</html>
