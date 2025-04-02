@@ -1,3 +1,4 @@
+// Preloader и запуск анимаций после загрузки страницы
 window.addEventListener('load', function() {
   gsap.to("#preloader", {
     duration: 1,
@@ -13,18 +14,19 @@ window.addEventListener('load', function() {
   });
 });
 
+// Улучшенная конфигурация Particles.js (больше частиц, разнообразие размеров)
 particlesJS("particles-js", {
   "particles": {
-    "number": { "value": 120, "density": { "enable": true, "value_area": 800 } },
+    "number": { "value": 200, "density": { "enable": true, "value_area": 800 } },
     "color": { "value": "#ffffff" },
     "shape": { "type": "circle" },
-    "opacity": { "value": 0.5, "random": false },
-    "size": { "value": 3, "random": true },
+    "opacity": { "value": 0.6, "random": true },
+    "size": { "value": 2, "random": true },
     "line_linked": {
       "enable": true,
-      "distance": 150,
-      "color": "#ffffff",
-      "opacity": 0.4,
+      "distance": 120,
+      "color": "#3498db",
+      "opacity": 0.5,
       "width": 1
     },
     "move": {
@@ -50,38 +52,57 @@ particlesJS("particles-js", {
   "retina_detect": true
 });
 
+// Функция для загрузки 3D модели с OrbitControls
 function loadModel(modelPath, containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
   
+  // Очистка контейнера, если необходимо
+  container.innerHTML = "";
+  
+  // Создание сцены
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x000000);
   
   const width = container.clientWidth;
   const height = container.clientHeight;
   
+  // Камера
   const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
   camera.position.set(0, 1, 3);
   
+  // Рендерер
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setSize(width, height);
   container.appendChild(renderer.domElement);
   
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  // Освещение
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
   scene.add(ambientLight);
   const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
   directionalLight.position.set(5, 10, 7.5);
   scene.add(directionalLight);
   
+  // OrbitControls с автоповоротом и возможностью ручного управления
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 2;
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.05;
+  
+  // Загрузка 3D модели через GLTFLoader
   const loader = new THREE.GLTFLoader();
   loader.load(modelPath, function(gltf) {
     const model = gltf.scene;
     model.scale.set(0.5, 0.5, 0.5);
+    // Центрируем модель
+    model.position.set(0, 0, 0);
     scene.add(model);
     
+    // Анимация сцены
     function animate() {
       requestAnimationFrame(animate);
-      model.rotation.y += 0.005;
+      controls.update();
       renderer.render(scene, camera);
     }
     animate();
@@ -89,6 +110,7 @@ function loadModel(modelPath, containerId) {
     console.error("Ошибка загрузки модели:", error);
   });
   
+  // Обработка изменения размера окна
   window.addEventListener('resize', function() {
     const width = container.clientWidth;
     const height = container.clientHeight;

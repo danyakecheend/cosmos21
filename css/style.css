@@ -1,6 +1,8 @@
+/* Сброс стилей */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Arial', sans-serif; overflow-x: hidden; }
 
+/* Particles.js фон – увеличено количество частиц */
 #particles-js {
   position: fixed;
   width: 100%;
@@ -11,6 +13,7 @@ body { font-family: 'Arial', sans-serif; overflow-x: hidden; }
   background: #000;
 }
 
+/* Preloader */
 #preloader {
   position: fixed;
   top: 0;
@@ -39,11 +42,12 @@ body { font-family: 'Arial', sans-serif; overflow-x: hidden; }
   100% { transform: rotate(360deg); }
 }
 
+/* Навигация */
 .navbar {
   background: rgba(0, 0, 0, 0.8);
   padding: 1rem 2rem;
 }
-.navbar-brand { font-size: 1.8rem; font-weight: bold; }
+.navbar-brand { font-size: 1.8rem; font-weight: bold; font-family: 'Orbitron', sans-serif; }
 .navbar .nav-link {
   font-size: 1.2rem;
   margin: 0 0.5rem;
@@ -62,14 +66,18 @@ body { font-family: 'Arial', sans-serif; overflow-x: hidden; }
 }
 .navbar .nav-link:hover::after { width: 100%; }
 
+/* Главный экран (index.html) */
 .main-header {
   padding: 100px 0;
   text-align: center;
   color: #fff;
+  background: url('https://via.placeholder.com/1920x1080?text=Космический+фон') no-repeat center center;
+  background-size: cover;
 }
-.main-header h1 { font-size: 3rem; margin-bottom: 1rem; }
+.main-header h1 { font-size: 3rem; margin-bottom: 1rem; font-family: 'Orbitron', sans-serif; }
 .main-header p { font-size: 1.5rem; margin-bottom: 2rem; }
 
+/* Карточки навигации */
 .nav-cards { margin-top: 50px; }
 .nav-card {
   background: rgba(0, 0, 0, 0.7);
@@ -83,6 +91,7 @@ body { font-family: 'Arial', sans-serif; overflow-x: hidden; }
 .nav-card .card-title { font-size: 1.8rem; margin-bottom: 1rem; }
 .nav-card .card-text { font-size: 1rem; }
 
+/* Общие секции страниц */
 .page-section {
   padding: 100px 0;
   min-height: 100vh;
@@ -96,22 +105,24 @@ body { font-family: 'Arial', sans-serif; overflow-x: hidden; }
   color: #3498db;
 }
 
+/* Контейнер для 3D модели, полный экран */
 .three-container {
-  width: 100%;
-  height: 400px;
+  width: 100vw;
+  height: 100vh;
   background: #000;
-  border: 2px solid #3498db;
-  border-radius: 8px;
-  margin: 20px auto;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
 }
 
+/* Дополнительные анимации */
 .animate-header { opacity: 0; transform: translateY(-30px); }
 .animate-subheader { opacity: 0; transform: translateY(30px); }
 .animate-section { opacity: 0; transform: translateX(-30px); }
 .animate-text { opacity: 0; }
 .animate-fade { opacity: 0; }
 
+/* Футер */
 footer {
   background: rgba(0,0,0,0.9);
   color: #fff;
