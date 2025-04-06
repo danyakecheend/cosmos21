@@ -31,16 +31,42 @@
     </div>
   </nav>
   
-  <!-- Контент -->
-  <section class="page-section">
-    <div class="container">
-      <h2 class="section-title animate-section">Контакты</h2>
-      <p class="animate-text">
-        Для получения дополнительной информации или сотрудничества свяжитесь с нами по электронной почте:
-        <a href="mailto:info@cosmicstation.by">info@cosmicstation.by</a>
-      </p>
+<!-- Контактная форма -->
+<section class="page-section" id="contactSection">
+  <div class="container">
+    <h2 class="section-title animate-section">Свяжитесь с нами</h2>
+    <p class="animate-text text-center">
+      Если у вас возникли вопросы, предложения или вы хотите сотрудничать, заполните форму ниже. Мы свяжемся с вами в ближайшее время.
+    </p>
+    <div class="contact-form cosmic-card animate-fade">
+      <form id="feedbackForm">
+        <div class="form-group">
+          <label for="name">Ваше имя</label>
+          <input type="text" class="form-control" id="name" placeholder="Введите ваше имя" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Электронная почта</label>
+          <input type="email" class="form-control" id="email" placeholder="Введите ваш email" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Тема сообщения</label>
+          <input type="text" class="form-control" id="subject" placeholder="Введите тему сообщения" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Сообщение</label>
+          <textarea class="form-control" id="message" rows="5" placeholder="Введите ваше сообщение" required></textarea>
+        </div>
+        <div class="form-group form-check cosmic-checkbox">
+          <input type="checkbox" class="form-check-input" id="consentCheckbox" required>
+          <label class="form-check-label" for="consentCheckbox">
+            Соглашаюсь на обработку персональной информации
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary cosmic-btn" id="submitBtn" disabled>Отправить сообщение</button>
+      </form>
     </div>
-  </section>
+  </div>
+</section>
   
   <footer class="text-center">
     <p>&copy; 2025 Космическая Станция. Все права защищены.</p>
@@ -52,5 +78,100 @@
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="js/scripts.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      // Включение кнопки отправки, когда галочка установлена
+      $('#consentCheckbox').on('change', function(){
+        $('#submitBtn').prop('disabled', !this.checked);
+      });
+  
+      // Обработка отправки формы
+      $('#feedbackForm').on('submit', function(e){
+        e.preventDefault();
+        // Здесь можно добавить код для AJAX отправки данных, например:
+        // $.post('server.php', $(this).serialize(), function(response){ ... });
+        alert('Ваше сообщение отправлено!');
+        // Сброс формы и отключение кнопки отправки
+        $(this)[0].reset();
+        $('#submitBtn').prop('disabled', true);
+      });
+    });
+  </script>
+
+<style>
+/* Стили для контактной формы в космической стилистике */
+#contactSection {
+  padding: 40px 0;
+}
+
+.cosmic-card {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+  border: 1px solid #3498db;
+  margin-top: 30px;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-form label {
+  font-weight: bold;
+  color: #fff;
+}
+
+.contact-form .form-control {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #555;
+  color: #fff;
+}
+
+.contact-form .form-control::placeholder {
+  color: #bbb;
+}
+
+.cosmic-checkbox .form-check-label {
+  color: #ccc;
+}
+
+.cosmic-btn {
+  background-color: #3498db;
+  border-color: #3498db;
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.cosmic-btn:hover:not(:disabled) {
+  background-color: #2980b9;
+}
+
+.cosmic-btn:disabled {
+  background-color: #777;
+  border-color: #777;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .cosmic-card {
+    padding: 20px;
+  }
+  .cosmic-btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+</style>
 </body>
 </html>
