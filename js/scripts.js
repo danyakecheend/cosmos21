@@ -128,7 +128,7 @@ function onMouseWheel(event) {
   
   // Камера
   const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-  camera.position.set(0, 1, 3);
+  camera.position.set(0, 0, 3);
   
   // Рендерер
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
