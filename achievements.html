@@ -234,7 +234,33 @@
     font-size: 2.5rem;
   }
 }
-
+/* Адаптация для широких экранов (от 1920px и более) */
+@media (min-width: 1920px) {
+  /* Уменьшаем вертикальные отступы между секциями */
+  .page-section {
+    padding: 20px 0; /* вместо 40px сверху и снизу */
+  }
+  /* Ограничение максимальной ширины основного контейнера для сохранения компоновки */
+  .container {
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* Снижаем отступы у 3D контейнера */
+  #three-container {
+    margin: 10px auto;
+  }
+  /* Уменьшаем отступы в интерактивных секциях (счётчики, стикеры) */
+  .counter-container,
+  .sticker-grid {
+    margin-bottom: 10px;
+  }
+  /* Сокращаем внешние отступы для текстовых блоков описания */
+  .achievement-description {
+    margin: 10px auto;
+    padding: 15px;
+  }
+}
   </style>
 </head>
 <body>
